@@ -1,56 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	 <meta charset="utf-8">
-	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-	 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	 <meta name="description" content="">
-	 <meta name="author" content="">
-	 <link rel="icon" href="css/bootstrap-3.3.7/docs/favicon.ico">
-	 <title>IMT3851-Oblig3</title>
-	 <!-- Bootstrap core CSS -->
-	 <link href="css/bootstrap-3.3.7/docs/dist/css/bootstrap.min.css" rel="stylesheet">
-	 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	 <link href="css/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-	 <!-- Custom styles for this template -->
-	 <link href="css/style.css" rel="stylesheet">
-  </head>
-  <body>
-	 <nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-		  <div class="navbar-header">
-			 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			 </button>
-			 <a class="navbar-brand" href="index.php">Giveaway</a>
-		  </div>
-		  <div id="navbar" class="collapse navbar-collapse">
-			 <ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="login.php">Login</a></li>
-				<li><a href="register.php">Registration</a></li>
-			 </ul>
-		  </div><!--/.nav-collapse -->
-		</div>
-	 </nav>
+<?php
+session_start();
+require_once("functions/class.user.php");
+$login = new USER();
 
-	 <div class="container">
-		<div class="starter-template">
-		  <h1>Giveaway</h1>
-		  <p class="lead">Free items just waiting for you to pick them up</p>
-		</div>
+if($login->is_loggedin()!="")
+{
+	$login->redirect('home.php');
+}
+
+if(isset($_POST['btn-login']))
+{
+	$uname = strip_tags($_POST['txt_uname_email']);
+	$umail = strip_tags($_POST['txt_uname_email']);
+	$upass = strip_tags($_POST['txt_password']);
+
+	if($login->doLogin($uname,$umail,$upass))
+	{
+		$login->redirect('home.php');
+	}
+	else
+	{
+		$error = "Wrong Details !";
+	}
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Coding Cage : Login</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="style.css" type="text/css"  />
+</head>
+<body>
+
+<div class="signin-form">
+
+	<div class="container">
+
+
+		 <form class="form-signin" method="post" id="login-form">
+
+		  <h2 class="form-signin-heading">Log in to GiveAway</h2><hr />
+
+		  <div id="error">
+		  <?php
+			if(isset($error))
+			{
+				?>
+					 <div class="alert alert-danger">
+						 <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?> !
+					 </div>
+					 <?php
+			}
+		?>
+		  </div>
+
+		  <div class="form-group">
+		  <input type="text" class="form-control" name="txt_uname_email" placeholder="Username or E mail ID" required />
+		  <span id="check-e"></span>
+		  </div>
+
+		  <div class="form-group">
+		  <input type="password" class="form-control" name="txt_password" placeholder="Your Password" />
+		  </div>
+
+		  <hr />
+
+		  <div class="form-group">
+				<button type="submit" name="btn-login" class="btn btn-default">
+						 <i class="glyphicon glyphicon-log-in"></i> &nbsp; SIGN IN
+				</button>
+		  </div>
+			<br />
+				<label>Don't have account yet? <a href="sign-up.php">Sign up here</a></label>
+		</form>
+
 	 </div>
-	 <!-- Bootstrap core JavaScript
-	 ================================================== -->
-	 <!-- Placed at the end of the document so the pages load faster -->
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	 <script>window.jQuery || document.write('<script src="css/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
-	 <script src="css/bootstrap-3.3.7/docs/dist/js/bootstrap.min.js"></script>
-	 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	 <script src="css/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+
+</div>
+
+</body>
 </html>
