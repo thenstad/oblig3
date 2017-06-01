@@ -57,8 +57,74 @@
 		  <a href="profile.php"><span class="glyphicon glyphicon-user"></span> profile</a></h1>
 			 <hr />
 		  <p class="h4">A list of all items</p>
-	 <p>PRODUCTS....... </p>
 	 </div>
+	 <div class="container">
+
+
+
+
+
+
+			 <?php
+			 $username = "root";
+			 $password = "";
+			 $host = "127.0.0.1";
+
+			 $connector = mysql_connect($host,$username,$password)
+				  or die("Unable to connect");
+			 $selected = mysql_select_db("dblogin", $connector)
+				or die("Unable to connect");
+
+			 //execute the SQL query and return records
+			 $result = mysql_query("SELECT item_title, item_description, item_date FROM items ");
+			 ?>
+			 <table border="2" style= "background-color: white; margin: 0 auto; width: 40vw; height: 50vh auto; border: 1px solid grey;" >
+			 <thead>
+				<tr>
+				  <th>Item</th>
+				  <th>Description</th>
+				  <th>Date</th>
+				  <th>User ID</th>
+				</tr>
+			 </thead>
+			 <tbody>
+				<?php
+				  while( $row = mysql_fetch_assoc( $result ) ){
+					 echo
+					 "<tr>
+						<td>{$row['item_title']}</td>
+						<td>{$row['item_description']}</td>
+						<td>{$row['item_date']}</td>
+						<td>Nothing here yet</td>
+					 </tr>\n";
+				  }
+				?>
+			 </tbody>
+		  </table>
+			<?php mysql_close($connector); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
 </div>
 
 <script src="bootstrap/js/bootstrap.min.js"></script>

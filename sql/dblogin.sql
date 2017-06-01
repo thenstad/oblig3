@@ -9,3 +9,12 @@ CREATE TABLE `dblogin`.`users` (
   `joining_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `dblogin`.`items` (
+	`item_id` int(11) NOT NULL AUTO_INCREMENT,
+	`item_title` varchar(50) NOT NULL,
+	`item_description` varchar(9999) NOT NULL,
+	`user_id` varchar(999999) NOT NULL,
+	`item_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`item_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
