@@ -62,11 +62,6 @@
 	 </div>
 	 <div class="container">
 
-
-
-
-
-
 			 <?php
 			 $username = "root";
 			 $password = "";
@@ -83,18 +78,17 @@
 			 <table border="2" style= "background-color: white; margin: 0 auto; width: 40vw; height: 50vh auto; border: 1px solid grey;" >
 			 <thead>
 				<tr>
-				  <th>Item</th>
-				  <th>Description</th>
-				  <th>Date</th>
-				  <th>User ID</th> <!-- Trying to find some way to connect this user id to our chat -->
+				  <th>Item</th> <!-- The name of the item filed in profile.php -->
+				  <th>Description</th> <!-- The description filed in profile.php -->
+				  <th>Date</th> <!-- The exact date the item was uploaded -->
+				  <th>User ID</th> <!-- We tried to find some way to connect this user id to an unique chat -->
+				  <th>CHAT</th> <!-- The possibility of chatting with product owner and anybody interested in the items -->
 				</tr>
 			 </thead>
 			 <tbody>
 				<?php
 
-
-
-
+				//Fetches data from the items table in the dblogin database
 				  while( $row = mysql_fetch_assoc( $result ) ){
 					 echo
 					 "<tr>
@@ -102,21 +96,13 @@
 						<td>{$row['item_description']}</td>
 						<td>{$row['item_date']}</td>
 						<td>{$row['user_id']}</td>
+						<td><a href='chat/index.php'>CHAT</a></td>
 					 </tr>\n";
 				  }
 
-
-
-
-
-/*
-				  while( $row = mysql_fetch_assoc( $result ) ){
-					 if {$row['user_id']} == $
-				  }
-*/
-
-
-echo 'Your ID: ' . $_SESSION['user_session'];
+				  //Shows your session ID, so you know who you are while chatting with other people, without
+				  //giving away your username or email adress
+				  echo 'Your User ID: ' . $_SESSION['user_session'];
 
 
 
@@ -127,27 +113,6 @@ echo 'Your ID: ' . $_SESSION['user_session'];
 			 </tbody>
 		  </table>
 			<?php mysql_close($connector); ?>
-
-
-
-
-<!-- <td><a href=chat{$row['user_id']}.php>Chat with the seller</a></td> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	</div>
 </div>

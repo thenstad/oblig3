@@ -54,19 +54,6 @@
 			  <div class="container">
 					<h1 class="h1">Give away an item</h1>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 					<form action="functions/upload_item.php" method="post">
 					  Title<br>
 					  <input type="text" name="item_title"><br>
@@ -79,13 +66,6 @@
 					<!-- IMPORTANT!!!! THIS FORM POSTS DATA TO UPLOAD_ITEM.PHP INSIDE THE FUNCTIONS FOLDER.
 					WE GOTTA ADD THE ID OF THE USER TO THAT TABLE SO THAT THE TABLE INSIDE HOME.PHP ALSO SHOWS
 					THE USER ID AND MAKE IT POSSIBLE TO CREATE A CHAT FROM THERE. -->
-
-
-
-
-
-
-
 				</div>
 
 		 </div>

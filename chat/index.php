@@ -23,6 +23,7 @@
 	  ?>
 	 </div>
 	</div>
+	<a href="../home.php">Go back the list of items</a>
   </div>
  </body>
 </html>

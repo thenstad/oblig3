@@ -13,11 +13,11 @@ if(isset($_POST['name']) && !isset($display_case)){
 }elseif(isset($display_case)){
  if(!isset($ermsg)){
 ?>
- <h2>Name Needed For Chatting</h2>
- You must provide a name for chatting. This name will be visible to other users.<br/><br/>
+ <h2>User ID needed for chatting</h2>
+ Your ID will be visible to other users<br/><br/>
  <form action="index.php" method="POST">
-  <div>Your Name : <input name="name" placeholder="A Name Please"/></div>
-  <button>Submit & Start Chatting</button>
+  <div>User ID : <input name="name" placeholder="User ID"/></div>
+  <button>Start chat</button>
  </form>
 <?php
  }else{
