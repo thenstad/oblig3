@@ -22,7 +22,7 @@
 	<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<script type="text/javascript" src="jquery-1.11.3-jquery.min.js"></script>
 	<link rel="stylesheet" href="style.css" type="text/css"  />
-	<title>welcome - <?php print($userRow['user_email']); ?></title>
+	<title>Your User ID: <?php print($userRow['user_id']); ?></title>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -52,8 +52,9 @@
 					<a href="profile.php"><span class="glyphicon glyphicon-user"></span> Profile</a></h1>
 			  </div>
 			  <div class="container">
-					<h1 class="h1">Give away an item</h1>
-
+					<h1 class="h2">Give away an item</h1>
+				  <?php echo 'Your User ID: ' . $_SESSION['user_session'];?>
+			  <div class="form_container">
 					<form action="functions/upload_item.php" method="post">
 					  Title<br>
 					  <input type="text" name="item_title"><br>
@@ -62,6 +63,7 @@
 					  <textarea name="item_description" rows="5" cols="40"></textarea><br><br>
 					  <input type="submit" value="Submit">
 					</form>
+				</div>
 
 					<!-- IMPORTANT!!!! THIS FORM POSTS DATA TO UPLOAD_ITEM.PHP INSIDE THE FUNCTIONS FOLDER.
 					WE GOTTA ADD THE ID OF THE USER TO THAT TABLE SO THAT THE TABLE INSIDE HOME.PHP ALSO SHOWS

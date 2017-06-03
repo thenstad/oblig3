@@ -24,7 +24,7 @@
 	<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 	<script type="text/javascript" src="jquery-1.11.3-jquery.min.js"></script>
 	<link rel="stylesheet" href="style.css" type="text/css"  />
-	<title>Give away the things you don't need</title>
+	<title>Your User ID: <?php print($userRow['user_id']); ?></title>
 </head>
 
 <body>
@@ -58,7 +58,7 @@
 		  <a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a> &nbsp;
 		  <a href="profile.php"><span class="glyphicon glyphicon-user"></span> Profile</a></h1>
 			 <hr />
-		  <p class="h1">A list of all items</p>
+		  <p class="h2">A list of all items</p>
 	 </div>
 	 <div class="container">
 
@@ -75,7 +75,7 @@
 			 //execute the SQL query and return records
 			 $result = mysql_query("SELECT item_title, item_description, item_date, user_id FROM items ");
 			 ?>
-			 <table border="2" style= "background-color: white; margin: 0 auto; width: 40vw; height: 50vh auto; border: 1px solid grey;" >
+			 <table border="2" style= "background-color: white; width: 40vw; height: 50vh auto; border: 1px solid grey;" >
 			 <thead>
 				<tr>
 				  <th>Item</th> <!-- The name of the item filed in profile.php -->
