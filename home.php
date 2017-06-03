@@ -13,6 +13,8 @@
 
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,10 +55,10 @@
 <div class="container-fluid" style="margin-top:80px;">
 	 <div class="container">
 		  <h1>
-		  <a href="home.php"><span class="glyphicon glyphicon-home"></span> home</a> &nbsp;
-		  <a href="profile.php"><span class="glyphicon glyphicon-user"></span> profile</a></h1>
+		  <a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a> &nbsp;
+		  <a href="profile.php"><span class="glyphicon glyphicon-user"></span> Profile</a></h1>
 			 <hr />
-		  <p class="h4">A list of all items</p>
+		  <p class="h1">A list of all items</p>
 	 </div>
 	 <div class="container">
 
@@ -76,7 +78,7 @@
 				or die("Unable to connect");
 
 			 //execute the SQL query and return records
-			 $result = mysql_query("SELECT item_title, item_description, item_date FROM items ");
+			 $result = mysql_query("SELECT item_title, item_description, item_date, user_id FROM items ");
 			 ?>
 			 <table border="2" style= "background-color: white; margin: 0 auto; width: 40vw; height: 50vh auto; border: 1px solid grey;" >
 			 <thead>
@@ -84,20 +86,43 @@
 				  <th>Item</th>
 				  <th>Description</th>
 				  <th>Date</th>
-				  <th>User ID</th>
+				  <th>User ID</th> <!-- Trying to find some way to connect this user id to our chat -->
 				</tr>
 			 </thead>
 			 <tbody>
 				<?php
+
+
+
+
 				  while( $row = mysql_fetch_assoc( $result ) ){
 					 echo
 					 "<tr>
 						<td>{$row['item_title']}</td>
 						<td>{$row['item_description']}</td>
 						<td>{$row['item_date']}</td>
-						<td>Nothing here yet</td>
+						<td>{$row['user_id']}</td>
 					 </tr>\n";
 				  }
+
+
+
+
+
+/*
+				  while( $row = mysql_fetch_assoc( $result ) ){
+					 if {$row['user_id']} == $
+				  }
+*/
+
+
+echo 'Your ID: ' . $_SESSION['user_session'];
+
+
+
+
+
+
 				?>
 			 </tbody>
 		  </table>
@@ -106,7 +131,7 @@
 
 
 
-
+<!-- <td><a href=chat{$row['user_id']}.php>Chat with the seller</a></td> -->
 
 
 

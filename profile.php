@@ -48,8 +48,8 @@
 	 <div class="container-fluid" style="margin-top:80px;">
 			  <div class="container">
 					<h1>
-					<a href="home.php"><span class="glyphicon glyphicon-home"></span> home</a> &nbsp;
-					<a href="profile.php"><span class="glyphicon glyphicon-user"></span> profile</a></h1>
+					<a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a> &nbsp;
+					<a href="profile.php"><span class="glyphicon glyphicon-user"></span> Profile</a></h1>
 			  </div>
 			  <div class="container">
 					<h1 class="h1">Give away an item</h1>
@@ -70,6 +70,7 @@
 					<form action="functions/upload_item.php" method="post">
 					  Title<br>
 					  <input type="text" name="item_title"><br>
+					  <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br>
 					  Description<br>
 					  <textarea name="item_description" rows="5" cols="40"></textarea><br><br>
 					  <input type="submit" value="Submit">
@@ -78,12 +79,6 @@
 					<!-- IMPORTANT!!!! THIS FORM POSTS DATA TO UPLOAD_ITEM.PHP INSIDE THE FUNCTIONS FOLDER.
 					WE GOTTA ADD THE ID OF THE USER TO THAT TABLE SO THAT THE TABLE INSIDE HOME.PHP ALSO SHOWS
 					THE USER ID AND MAKE IT POSSIBLE TO CREATE A CHAT FROM THERE. -->
-
-
-
-
-
-
 
 
 

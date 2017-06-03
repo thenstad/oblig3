@@ -1,9 +1,9 @@
 <?php
 //ini_set("display_errors","on");
 if(!isset($dbh)){
- session_start();
+session_start();
  date_default_timezone_set("UTC"); // Set Time Zone
- $host = "localhost"; // Hostname
+ $host = "127.0.0.1"; // Hostname
  $port = "3306"; // MySQL Port : Default : 3306
  $user = "root"; // Username Here
  $pass = ""; //Password Here
